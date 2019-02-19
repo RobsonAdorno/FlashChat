@@ -19,6 +19,29 @@ class Utils {
         UIApplication.topViewController()?.present(alert, animated: true, completion:nil)
     }
     
+    func especifyErrors(errorDescription:String){
+        
+        switch errorDescription {
+        
+        case "There is no user record corresponding to this identifier. The user may have been deleted.","The password is invalid or the user does not have a password.":
+            showAlert(title: "Atencão", message: "Usuário ou senha inválidos", buttonText: "Ok")
+            break
+            
+        case "The email address is badly formatted.":
+            showAlert(title: "Atencão", message: "Formato de email inválido", buttonText: "Ok")
+            break
+            
+        case "The password must be 6 characters long or more.":
+            showAlert(title: "Atencão", message: "Password deve conter 6 caracteres ou mais", buttonText: "Ok")
+            break
+            
+        default:
+            showAlert(title: "Atencão", message: "Erro ao realizar o login", buttonText: "Ok")
+            break
+        }
+        
+    }
+    
 }
 
 extension UIApplication {

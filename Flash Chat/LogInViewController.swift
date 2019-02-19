@@ -34,7 +34,7 @@ class LogInViewController: UIViewController {
             
             if let error = error{
                 
-                self.alert.showAlert(title: "Atencão", message: "Error ao realizar o login", buttonText: "Ok")
+                self.alert.especifyErrors(errorDescription: error.localizedDescription)
                 NSLog("Description: \(error)")
             }else{
                 

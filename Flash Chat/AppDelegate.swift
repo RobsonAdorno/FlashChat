@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         let myDatabase = Database.database().reference()
-        myDatabase.setValue("Has connect!")
+        myDatabase.setValue("The bomb has been planted")
         
         return true
     }

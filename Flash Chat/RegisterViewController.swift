@@ -33,11 +33,11 @@ class RegisterViewController: UIViewController {
         //TODO: Set up a new user on our Firbase database
         
         Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextfield.text!){
-            (error, success) in
+            (sucess, error) in
             
             if let error = error{
                 
-                self.alert.showAlert(title: "Atenção", message: "Error ao realizar o cadastro", buttonText: "Ok")
+                self.alert.especifyErrors(errorDescription: error.localizedDescription)
                 print("Description: \(error)")
             }else{
                 
