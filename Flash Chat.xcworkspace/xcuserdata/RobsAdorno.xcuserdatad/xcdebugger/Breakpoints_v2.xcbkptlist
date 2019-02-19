@@ -9,46 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Flash Chat/LogInViewController.swift"
-            timestampString = "571727104.445002"
+            filePath = "Flash Chat/RegisterViewController.swift"
+            timestampString = "572237288.824261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "logInPressed(_:)"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "registerPressed(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Flash_Chat.LogInViewController.logInPressed(Swift.AnyObject) -&gt; ()"
-                  moduleName = "Flash Chat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/RobsAdorno/Desktop/FlashChat/Flash%20Chat/LogInViewController.swift"
-                  timestampString = "571727106.384865"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
-                  offsetFromSymbolStart = "37">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Flash_Chat.LogInViewController.logInPressed(Swift.AnyObject) -&gt; ()"
-                  moduleName = "Flash Chat"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/RobsAdorno/Desktop/FlashChat/Flash%20Chat/LogInViewController.swift"
-                  timestampString = "571727106.39763"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
-                  offsetFromSymbolStart = "55">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

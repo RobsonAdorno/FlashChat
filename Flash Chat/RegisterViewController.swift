@@ -6,10 +6,12 @@
 //
 
 import UIKit
-
+import Firebase
 
 class RegisterViewController: UIViewController {
 
+    //MARK: Constants
+    let alert = Utils()
     
     //Pre-linked IBOutlets
 
@@ -28,16 +30,19 @@ class RegisterViewController: UIViewController {
 
   
     @IBAction func registerPressed(_ sender: AnyObject) {
-        
-
-        
         //TODO: Set up a new user on our Firbase database
         
-        
-
-        
-        
-    } 
-    
-    
+        Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextfield.text!){
+            (error, success) in
+            
+            if let error = error{
+                
+                self.alert.showAlert(title: "Atenção", message: "Error ao realizar o cadastro", buttonText: "Ok")
+                print("Description: \(error)")
+            }else{
+                
+                self.performSegue(withIdentifier: "goToChat", sender: self)
+            }
+        }
+    }
 }

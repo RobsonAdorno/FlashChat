@@ -9,6 +9,9 @@ import UIKit
 import Firebase
 
 class LogInViewController: UIViewController {
+    
+    //MARK: Constants
+    let alert = Utils()
 
     //Textfields pre-linked with IBOutlets
     @IBOutlet var emailTextfield: UITextField!
@@ -26,26 +29,19 @@ class LogInViewController: UIViewController {
    
     @IBAction func logInPressed(_ sender: AnyObject) {
         
-        
-        //TODO: Log in the user
-        
-        Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextfield.text!){
-            (error, success) in
+        Auth.auth().signIn(withEmail: emailTextfield.text!, password: passwordTextfield.text!) {
+            (sucess, error) in
             
             if let error = error{
                 
-                print("Problems motherfucker? \(error)")
+                self.alert.showAlert(title: "Atencão", message: "Error ao realizar o login", buttonText: "Ok")
+                NSLog("Description: \(error)")
             }else{
                 
                 self.performSegue(withIdentifier: "goToChat", sender: self)
             }
-            
-            
         }
         
+      
     }
-    
-
-
-    
 }  
