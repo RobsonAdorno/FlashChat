@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 
 class ChatViewController: UIViewController {
@@ -26,11 +27,11 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
         
         //TODO: Set yourself as the delegate and datasource here:
-        
+        messageTableView.delegate = self
+        messageTableView.dataSource = self
         
         
         //TODO: Set yourself as the delegate of the text field here:
-
         
         
         //TODO: Set the tapGesture here:
@@ -107,10 +108,27 @@ class ChatViewController: UIViewController {
     @IBAction func logOutPressed(_ sender: AnyObject) {
         
         //TODO: Log out the user and send them back to WelcomeViewController
-        
+        try? Auth.auth().signOut()
+        navigationController?.popToRootViewController(animated: true)
         
     }
     
 
 
+}
+
+extension ChatViewController: UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
+        let array = ["BLA", "BLE", "BLI"]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell") as? CustomMessageCell  else {return UITableViewCell()}
+        
+        cell.messageBody.text = array[indexPath.row]
+        
+        return cell
+    }
 }
