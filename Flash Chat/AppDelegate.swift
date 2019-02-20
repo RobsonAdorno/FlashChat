@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        let myDatabase = Database.database().reference()
-        myDatabase.setValue("The bomb has been planted")
+//        let myDatabase = Database.database().reference()
+//        myDatabase.setValue("The bomb has been planted")
         
         return true
     }
