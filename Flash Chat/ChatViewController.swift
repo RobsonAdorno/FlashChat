@@ -13,6 +13,7 @@ import Firebase
 class ChatViewController: UIViewController {
     
     // Declare instance variables here
+    var message:[Message] = [Message]()
 
     
     // We've pre-linked the IBOutlets
@@ -38,24 +39,10 @@ class ChatViewController: UIViewController {
         
         
         configureTableView()
-
-
+        
+        retrieveMessages()
         
     }
-
-    ///////////////////////////////////////////
-    
-    //MARK: - TableView DataSource Methods
-    
-    
-    
-    //TODO: Declare cellForRowAtIndexPath here:
-    
-    
-    
-    //TODO: Declare numberOfRowsInSection here:
-    
-    
     
     //TODO: Declare tableViewTapped here:
     @objc func tableViewTapped() {
@@ -81,8 +68,11 @@ class ChatViewController: UIViewController {
     
     //TODO: Declare textFieldDidBeginEditing here:
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.heightConstraint.constant = 350
-        self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.5) {
+            self.heightConstraint.constant = 350
+            self.view.layoutIfNeeded()
+        }
+        
     }
     
     
@@ -131,7 +121,25 @@ class ChatViewController: UIViewController {
     
     func retrieveMessages(){
         
-       
+       let messageDB = Database.database().reference().child("Messages")
+        
+        messageDB.observe(.childAdded) { (snapshot) in
+            
+            let snapshotValue = snapshot.value as! Dictionary<String, String>
+            
+            let emailValue = snapshotValue["Sender"]!
+            let messageBody = snapshotValue["MessageBody"]!
+            
+            let msg = Message()
+            
+            msg.sender = emailValue
+            msg.messageBody = messageBody
+            
+            self.message.append(msg)
+            
+            self.configureTableView()
+            self.messageTableView.reloadData()
+        }
         
     
     }
@@ -146,15 +154,16 @@ class ChatViewController: UIViewController {
 
 extension ChatViewController: UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return message.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
-        let array = ["BLA", "BLE", "BLI"]
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell") as? CustomMessageCell  else {return UITableViewCell()}
         
-        cell.messageBody.text = array[indexPath.row]
+        cell.messageBody.text = message[indexPath.row].messageBody
+        cell.senderUsername.text = message[indexPath.row].sender
+        cell.avatarImageView.image = UIImage(named: "egg")
         
         return cell
     }
